@@ -20,7 +20,6 @@ class SnakeGame:
         self.display_height = self.height + 2 * self.border_size + 40
 
         self.silent_mode = silent_mode
-        self.silent_mode = silent_mode
         if not silent_mode:
             pygame.init()
             pygame.display.set_caption("Snake Game")
@@ -30,14 +29,11 @@ class SnakeGame:
             # Load sound effects - ✅ 添加异常处理（WSL 无音频设备）
             try:
                 mixer.init()
-                self.sound_eat = mixer.Sound("sound/eat.wav")
-                self.sound_game_over = mixer.Sound("sound/game_over.wav")
-                self.sound_victory = mixer.Sound("sound/victory.wav")
+                # self.sound_eat = mixer.Sound("sound/eat.wav")
+                # self.sound_game_over = mixer.Sound("sound/game_over.wav")
+                # self.sound_victory = mixer.Sound("sound/victory.wav")
             except pygame.error as e:
                 print(f"⚠️ 音频设备不可用：{e}，将静音运行")
-                class DummySound:
-                    def play(self): pass
-                self.sound_eat = self.sound_game_over = self.sound_victory = DummySound()
         else:
             self.screen = None
             self.font = None
@@ -83,7 +79,8 @@ class SnakeGame:
             food_obtained = True
             self.score += 10 # Add 10 points to the score when food is eaten.
             if not self.silent_mode:
-                self.sound_eat.play()
+                # self.sound_eat.play()
+                pass
         else:
             food_obtained = False
             self.non_snake.add(self.snake.pop()) # Pop the last cell of the snake and add it to the non-snake set.
@@ -104,9 +101,11 @@ class SnakeGame:
         else: # If game is over and the game is not in silent mode, play game over sound effect.
             if not self.silent_mode:
                 if len(self.snake) < self.grid_size:
-                    self.sound_game_over.play()
+                    pass
+                    # self.sound_game_over.play()
                 else:
-                    self.sound_victory.play()
+                    # self.sound_victory.play()
+                    pass
 
         # Add new food after snake movement completes.
         if food_obtained:

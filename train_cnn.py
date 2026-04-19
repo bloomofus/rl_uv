@@ -15,7 +15,7 @@ from snake_game_custom_wrapper_cnn import SnakeEnv
 if torch.backends.mps.is_available():
     NUM_ENV = 32 * 2
 else:
-    NUM_ENV = 16
+    NUM_ENV = 64
 LOG_DIR = "logs"
 
 os.makedirs(LOG_DIR, exist_ok=True)
